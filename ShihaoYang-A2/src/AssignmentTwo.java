@@ -48,4 +48,26 @@ public class AssignmentTwo {
 
         System.out.println("🡻  After sorting:");
         ride.printRideHistory();
-    }}
+    }
+    public void partFive() {
+        Employee op = new Employee("John", 30, "E001", "Operator", 50000);
+        Ride ride = new Ride("Roller Coaster", 3, op); // 每轮最多 3 人
+
+        // 1. 添加 10 人到队列
+        for (int i = 1; i <= 10; i++) {
+            ride.addVisitorToQueue(new Visitor("V" + i, 10 + i, "V00" + i,
+                    "Child", 1.0 + i * 0.1));
+        }
+
+        // 2. 打印初始队列
+        ride.printQueue();
+
+        // 3. 运行一圈
+        ride.runOneCycle();
+
+        // 4. 打印剩余队列 & 历史
+        System.out.println("🡻  Queue after 1 cycle:");
+        ride.printQueue();
+        ride.printRideHistory();
+    }
+}
