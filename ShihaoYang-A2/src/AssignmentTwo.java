@@ -30,4 +30,22 @@ public class AssignmentTwo {
         System.out.println("📊  Total visitors in history: " + ride.numberOfVisitors());
         ride.printRideHistory();
     }
-}
+    public void partFourB() {
+        Employee op = new Employee("John", 30, "E001", "Operator", 50000);
+        Ride ride = new Ride("Roller Coaster", 2, op);
+
+        // 故意打乱顺序
+        ride.addVisitorToHistory(new Visitor("Zoe", 25, "V010", "Adult", 1.9));
+        ride.addVisitorToHistory(new Visitor("Amy", 10, "V007", "Child", 1.0));
+        ride.addVisitorToHistory(new Visitor("Tom", 25, "V008", "Adult", 1.75));
+        ride.addVisitorToHistory(new Visitor("Eva", 10, "V009", "Child", 1.2));
+        ride.addVisitorToHistory(new Visitor("Leo", 15, "V006", "Teen", 1.5));
+
+        System.out.println("🡻  Before sorting:");
+        ride.printRideHistory();
+
+        ride.sortRideHistory();
+
+        System.out.println("🡻  After sorting:");
+        ride.printRideHistory();
+    }}

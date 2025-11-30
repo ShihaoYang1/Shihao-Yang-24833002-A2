@@ -92,4 +92,11 @@ public class Ride implements RideInterface {
         numOfCycles++;
         System.out.println("🎢 Ride cycle " + numOfCycles + " completed with " + count + " visitors.");
     }
+    /**
+     * Part4B：按年龄+身高对 rideHistory 进行升序排序
+     */
+    public void sortRideHistory() {
+        rideHistory.sort(new VisitorComparator());
+        System.out.println("✅  Ride history sorted by age + height.");
+    }
 }
