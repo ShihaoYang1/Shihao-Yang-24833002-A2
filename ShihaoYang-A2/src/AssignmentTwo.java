@@ -70,4 +70,18 @@ public class AssignmentTwo {
         ride.printQueue();
         ride.printRideHistory();
     }
+    public void partSix() {
+        Employee op = new Employee("John", 30, "E001", "Operator", 50000);
+        Ride ride = new Ride("Roller Coaster", 3, op);
+
+        // 添加 5 个游客并运行一圈，产生历史
+        for (int i = 1; i <= 5; i++) {
+            ride.addVisitorToQueue(new Visitor("V" + i, 10 + i, "V00" + i,
+                    "Child", 1.0 + i * 0.1));
+        }
+        ride.runOneCycle();
+
+        // 导出到文件
+        ride.exportRideHistory("ride_history.csv");
+    }
 }

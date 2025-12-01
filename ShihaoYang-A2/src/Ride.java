@@ -1,5 +1,5 @@
 import java.util.*;
-
+import java.io.*;
 public class Ride implements RideInterface {
     private String name;
     private int maxRiders;
@@ -98,5 +98,21 @@ public class Ride implements RideInterface {
     public void sortRideHistory() {
         rideHistory.sort(new VisitorComparator());
         System.out.println("✅  Ride history sorted by age + height.");
+    }
+    public void exportRideHistory(String fileName) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
+            for (Visitor v : rideHistory) {
+                String line = v.getName() + "," +
+                        v.getAge() + "," +
+                        v.getId() + "," +
+                        v.getTicketType() + "," +
+                        v.getHeight();
+                bw.write(line);
+                bw.newLine();
+            }
+            System.out.println("✅  Ride history exported to " + fileName);
+        } catch (IOException e) {
+            System.out.println("❌  Export failed: " + e.getMessage());
+        }
     }
 }
