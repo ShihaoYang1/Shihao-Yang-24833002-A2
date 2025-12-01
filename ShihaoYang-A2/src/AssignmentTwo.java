@@ -84,4 +84,14 @@ public class AssignmentTwo {
         // 导出到文件
         ride.exportRideHistory("ride_history.csv");
     }
+    public void partSeven() {
+        Ride ride = new Ride("Roller Coaster", 3, null); // 无需操作员，只导入
+
+        // 1. 导入文件
+        ride.importRideHistory("ride_history.csv");
+
+        // 2. 打印验证
+        System.out.println("📊  Imported visitors count: " + ride.numberOfVisitors());
+        ride.printRideHistory();
+    }
 }

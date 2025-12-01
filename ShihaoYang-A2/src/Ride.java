@@ -115,4 +115,28 @@ public class Ride implements RideInterface {
             System.out.println("❌  Export failed: " + e.getMessage());
         }
     }
+    /**
+     * Part7：从 csv 文件导入 rideHistory
+     * 格式：name,age,id,ticketType,height
+     */
+    public void importRideHistory(String fileName) {
+        rideHistory.clear(); // 可选：先清空旧数据
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length != 5) continue; // 格式不对就跳过
+                String name = parts[0];
+                int age = Integer.parseInt(parts[1]);
+                String id = parts[2];
+                String ticketType = parts[3];
+                double height = Double.parseDouble(parts[4]);
+                Visitor v = new Visitor(name, age, id, ticketType, height);
+                rideHistory.add(v);
+            }
+            System.out.println("✅  Ride history imported from " + fileName);
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("❌  Import failed: " + e.getMessage());
+        }
+    }
 }
